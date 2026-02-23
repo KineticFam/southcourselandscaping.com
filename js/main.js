@@ -19,6 +19,18 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
+    // Add fade-in class to sections and cards FIRST
+    document.querySelectorAll('.section').forEach((section, index) => {
+        if (!section.classList.contains('hero')) {
+            section.classList.add('fade-in');
+            section.style.transitionDelay = `${index * 0.1}s`;
+        }
+    });
+    document.querySelectorAll('.card, .area-card').forEach((card, index) => {
+        card.classList.add('fade-in');
+        card.style.transitionDelay = `${index * 0.1}s`;
+    });
+    
     // Smooth Fade-in Animation on Scroll
     const observerOptions = {
         threshold: 0.1,
@@ -134,19 +146,4 @@ document.addEventListener('DOMContentLoaded', function() {
     
 });
 
-// Add fade-in class to elements on page load
-window.addEventListener('load', function() {
-    // Add fade-in class to sections for animation
-    document.querySelectorAll('.section').forEach((section, index) => {
-        if (!section.classList.contains('hero')) {
-            section.classList.add('fade-in');
-            section.style.transitionDelay = `${index * 0.1}s`;
-        }
-    });
-    
-    // Add fade-in to cards and other elements
-    document.querySelectorAll('.card, .area-card').forEach((card, index) => {
-        card.classList.add('fade-in');
-        card.style.transitionDelay = `${index * 0.1}s`;
-    });
-});
+// fade-in setup moved to DOMContentLoaded
